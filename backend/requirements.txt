@@ -1,0 +1,10 @@
+numpy
+# Optional: semantic embeddings (pulls in PyTorch, over 1 GB). Without it the app uses a
+# dependency-free hashing embedder (see ingest/chunk_embed.py). To use it: pip install sentence-transformers
+# sentence-transformers
+fastapi
+uvicorn[standard]
+python-multipart
+google-genai
+pydantic
+python-dotenv
