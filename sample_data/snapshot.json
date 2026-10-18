@@ -1,0 +1,733 @@
+{
+  "items": [
+    {
+      "item_type": "decision",
+      "summary": "Target go-live date is November 2, 2026",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": "Agreed in the signed Statement of Work for payroll and time & attendance implementation.",
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "quote": "The target go-live date is November 2, 2026."
+        },
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "We're moving about 500 employees across Riverbend Medical Center in Ohio and the Riverbend Clinics in Pennsylvania onto payroll and time and attendance, with a target go-live of November 2."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "- Nov 2: Go-live"
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Go-live is still targeted for Nov 2."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Target go-live date is November 2, 2026",
+          "at": "2026-08-25 09:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Priya Raman delivers a complete employee data file by October 16, 2026",
+      "owner_name": "Priya Raman",
+      "side": "client",
+      "due_date": "2026-10-16",
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "quote": "Client will deliver a complete employee data file within ten (10) business days of the kickoff meeting."
+        },
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "We can have it to you by September 22."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "- Sep 22: Complete employee data file delivered (Priya's team)"
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "quote": "I should have it by Oct 6. Is that OK?"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "We have it due October 8, and that gates Tomás's tax configuration."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "I can get it to you by Friday, October 16."
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Working on it with IT."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Priya Raman delivers a complete employee data file within ten business days of kickoff",
+          "at": "2026-08-25 09:00"
+        },
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "changed",
+          "field": "due_date",
+          "old": null,
+          "new": "2026-09-22",
+          "at": "2026-09-08 10:00"
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "kind": "changed",
+          "field": "due_date",
+          "old": "2026-09-22",
+          "new": "2026-10-06",
+          "at": "2026-09-18 09:12"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "kind": "changed",
+          "field": "due_date",
+          "old": "2026-10-06",
+          "new": "2026-10-08",
+          "at": "2026-10-01 14:00"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "kind": "changed",
+          "field": "due_date",
+          "old": "2026-10-08",
+          "new": "2026-10-16",
+          "at": "2026-10-08 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "ADP configures payroll, tax jurisdictions, and earnings rules",
+      "owner_name": "Dana Whitfield",
+      "side": "adp",
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "quote": "ADP will configure payroll, tax jurisdictions, and earnings rules according to the agreed specifications."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "ADP configures payroll, tax jurisdictions, and earnings rules",
+          "at": "2026-08-25 09:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Marcus Lee conducts one parallel payroll cycle before go-live",
+      "owner_name": "Marcus Lee",
+      "side": "adp",
+      "due_date": "2026-10-26",
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "quote": "ADP will conduct one (1) parallel payroll cycle before go-live."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "- Week of Oct 26: Parallel payroll cycle (Marcus)"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "On testing, I'd like us to run one full parallel payroll cycle the week of October 26, before go-live, so Greg's team can compare our results against their current payroll."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Statement of Work (excerpt) - Payroll and Time & Attendance Implementation",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "ADP conducts one parallel payroll cycle before go-live",
+          "at": "2026-08-25 09:00"
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "kind": "changed",
+          "field": "due_date",
+          "old": null,
+          "new": "2026-10-26",
+          "at": "2026-09-11 16:45"
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "kind": "changed",
+          "field": "owner",
+          "old": "Dana Whitfield",
+          "new": "Marcus Lee",
+          "at": "2026-09-11 16:45"
+        }
+      ]
+    },
+    {
+      "item_type": "decision",
+      "summary": "Keep biweekly pay frequency with Friday pay dates",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": "Keeping the same schedule means nobody's pay date changes",
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "That makes sense, and keeping the same schedule means nobody's pay date changes. So, biweekly with Friday pay dates."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "Pay frequency (biweekly, Friday pay dates) and overtime rules (Ohio 8-and-80, Pennsylvania weekly 40) are locked in per the kickoff."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Keep biweekly pay frequency with Friday pay dates",
+          "at": "2026-09-08 10:00"
+        }
+      ]
+    },
+    {
+      "item_type": "decision",
+      "summary": "Ohio employees use 8-and-80 overtime, Pennsylvania uses weekly 40",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": "Ohio keeps 8-and-80 to avoid nurses' paychecks changing overnight and causing issues",
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "Okay, Ohio on 8-and-80 and Pennsylvania on weekly 40. I'll configure it that way."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "Pay frequency (biweekly, Friday pay dates) and overtime rules (Ohio 8-and-80, Pennsylvania weekly 40) are locked in per the kickoff."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Ohio employees use 8-and-80 overtime, Pennsylvania uses weekly 40",
+          "at": "2026-09-08 10:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Tomás Rivera configures state and local taxes by October 9, 2026",
+      "owner_name": "Tomás Rivera",
+      "side": "adp",
+      "due_date": "2026-10-09",
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "I can have the state and local tax configuration done by October 1, as long as the file arrives in time."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "- Oct 1: State and local tax configuration complete (Tomás)"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "If it arrives October 8, I can finish the tax configuration by October 9."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Tomás Rivera configures state and local taxes by October 1, 2026",
+          "at": "2026-09-08 10:00"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "kind": "changed",
+          "field": "due_date",
+          "old": "2026-10-01",
+          "new": "2026-10-09",
+          "at": "2026-10-01 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Sandra Okafor has SFTP access ready by September 18, 2026",
+      "owner_name": "Sandra Okafor",
+      "side": "client",
+      "due_date": "2026-09-18",
+      "status": "done",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "I'll have SFTP access ready by September 18."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "- Sep 18: Secure file transfer (SFTP) access ready (Sandra)"
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "quote": "SFTP access is live. I sent the credentials to Dana separately."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Sandra Okafor has SFTP access ready by September 18, 2026",
+          "at": "2026-09-08 10:00"
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "kind": "changed",
+          "field": "status",
+          "old": "open",
+          "new": "done",
+          "at": "2026-09-18 09:12"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Check with timeclock vendor regarding API availability for automatic hour imports",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "Someone should check with the vendor."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "2. Greg, do you have a contact at your timeclock vendor? We still need to find out whether they offer an API."
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "quote": "Any update on the timeclock API question? I still don't know who on the ADP side owns it."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "Can I ask about the timeclock again? I raised it at kickoff and again in Slack yesterday and haven't heard anything."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Check with timeclock vendor regarding API availability for automatic hour imports",
+          "at": "2026-09-08 10:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Dana Whitfield sends the detailed implementation plan to Priya by October 9, 2026",
+      "owner_name": "Dana Whitfield",
+      "side": "adp",
+      "due_date": "2026-10-09",
+      "status": "done",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "Last thing from me: I'll send the detailed implementation plan to Priya by Friday, September 11."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "As promised, the implementation plan is attached."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "I'll send a revised project plan reflecting the new data file date by tomorrow, October 9."
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Revised project plan is in the shared folder."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Dana Whitfield sends the detailed implementation plan to Priya by September 11, 2026",
+          "at": "2026-09-08 10:00"
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "kind": "changed",
+          "field": "due_date",
+          "old": "2026-09-11",
+          "new": "2026-10-09",
+          "at": "2026-10-08 14:00"
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "kind": "changed",
+          "field": "status",
+          "old": "open",
+          "new": "done",
+          "at": "2026-10-09 15:30"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Timeclock vendor API availability is unknown, unassigned, and repeatedly questioned with vendor renewal approaching",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "high",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "quote": "One open item is time and attendance. Riverbend uses a timeclock system, and whether we can import hours automatically depends on whether the vendor offers an API. Someone should check with the vendor."
+        },
+        {
+          "doc": "Implementation plan and next steps",
+          "quote": "We still need to find out whether they offer an API."
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "quote": "Bumping the timeclock question again. That's the third time I'm asking. Our contract with the vendor renews soon and we need to know whether the API exists."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "Can I ask about the timeclock again? I raised it at kickoff and again in Slack yesterday and haven't heard anything. If there's no API, we're talking manual time imports for roughly 500 people every pay period."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "Same question as before about the timeclock vendor. Any news?"
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Still nothing on the timeclock API. I've asked at kickoff, here twice, and in two status meetings."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Riverbend Health - Implementation Kickoff",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Timeclock vendor API availability is unknown and contact is unassigned",
+          "at": "2026-09-08 10:00"
+        },
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "kind": "changed",
+          "field": "severity",
+          "old": "medium",
+          "new": "high",
+          "at": "2026-09-18 09:12"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Sensitive employee data posted in chat instead of SFTP",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "medium",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "quote": "Please don't paste real employee data in chat though, use SFTP for anything like that."
+        }
+      ],
+      "events": [
+        {
+          "doc": "#riverbend-implementation (Sep 18 - Oct 2)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Sensitive employee data posted in chat instead of SFTP",
+          "at": "2026-09-18 09:12"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Employee data file due date slipped again to October 16, further threatening tax configuration",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "medium",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "We have it due October 8, and that gates Tomás's tax configuration."
+        },
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "That's about ten days later than the October 6 date from Slack."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Employee data file due date moved from October 6 to October 8, threatening Tomás's tax configuration",
+          "at": "2026-10-01 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Greg Hallman reviews the payroll comparison and signs off by October 30, 2026",
+      "owner_name": "Greg Hallman",
+      "side": "client",
+      "due_date": "2026-10-30",
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "quote": "I'll review the comparison and sign off by October 30."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Weekly Status Meeting (Oct 1)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Greg Hallman reviews the payroll comparison and signs off by October 30, 2026",
+          "at": "2026-10-01 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "commitment",
+      "summary": "Priya Raman delivers the confirmed Pennsylvania headcount number by October 14, 2026",
+      "owner_name": "Priya Raman",
+      "side": "client",
+      "due_date": "2026-10-14",
+      "status": "blocked",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "I'll get you the confirmed number by October 14."
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Final Pennsylvania headcount: finance hasn't signed off yet. The CFO is traveling until the 20th. I'll send the number as soon as I have it."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Priya Raman delivers the confirmed Pennsylvania headcount number by October 14, 2026",
+          "at": "2026-10-08 14:00"
+        },
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "kind": "changed",
+          "field": "status",
+          "old": "open",
+          "new": "blocked",
+          "at": "2026-10-09 15:30"
+        }
+      ]
+    },
+    {
+      "item_type": "opportunity",
+      "summary": "Client plans to add about 80 employees at the Pennsylvania clinics in January",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": null,
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "and we're also planning to add about 80 employees at the Pennsylvania clinics in January."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Client plans to add about 80 employees at the Pennsylvania clinics in January",
+          "at": "2026-10-08 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Potential scope change triggered by a headcount increase of more than ten percent requiring a change order",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "medium",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "quote": "A headcount change of more than ten percent needs a change order under the statement of work, so we should look at that once the number is final."
+        }
+      ],
+      "events": [
+        {
+          "doc": "Weekly Status Meeting (Oct 8)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Potential scope change triggered by a headcount increase of more than ten percent requiring a change order",
+          "at": "2026-10-08 14:00"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Client payroll manager has a conflicting understanding of the go-live date (Nov 9 instead of Nov 2)",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "high",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "I had understood it was Nov 9. I'll check with Priya."
+        }
+      ],
+      "events": [
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Client payroll manager has a conflicting understanding of the go-live date (Nov 9 instead of Nov 2)",
+          "at": "2026-10-09 15:30"
+        }
+      ]
+    },
+    {
+      "item_type": "risk",
+      "summary": "Client losing confidence due to unresolved timeclock API questions and threatening escalation to CFO",
+      "owner_name": null,
+      "side": null,
+      "due_date": null,
+      "status": "open",
+      "rationale": null,
+      "severity": "high",
+      "confidence": null,
+      "sources": [
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "quote": "Honestly I'm losing confidence we'll be ready on any date. If we don't hear something this week I'm going to escalate to our CFO."
+        }
+      ],
+      "events": [
+        {
+          "doc": "#riverbend-implementation (Oct 9 - Oct 14)",
+          "kind": "created",
+          "field": null,
+          "old": null,
+          "new": "Client losing confidence due to unresolved timeclock API questions and threatening escalation to CFO",
+          "at": "2026-10-09 15:30"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+Title: Weekly Status Meeting (Oct 1)
+Type: meeting_transcript
+Date: 2026-10-01 14:00
+
+Attendees: Dana Whitfield (ADP), Marcus Lee (ADP), Tomás Rivera (ADP), Greg Hallman (Riverbend). Priya Raman and Sandra Okafor were not present.
+
+[00:00:20] Dana Whitfield: Quick status. The plan is on track except for one dependency: the employee data file. We have it due October 8, and that gates Tomás's tax configuration.
+[00:01:10] Greg Hallman: Priya owns the file. I'll pass that along, but I can't speak to the date.
+[00:01:40] Tomás Rivera: Since the file isn't here yet, I'll miss the October 1 target. If it arrives October 8, I can finish the tax configuration by October 9. That's tight, but doable.
+[00:02:30] Marcus Lee: On testing, I'd like us to run one full parallel payroll cycle the week of October 26, before go-live, so Greg's team can compare our results against their current payroll. The first live payroll is where mistakes get expensive.
+[00:03:00] Greg Hallman: Agreed. I'll review the comparison and sign off by October 30.
+[00:03:15] Dana Whitfield: Decision made, then. One parallel cycle the week of October 26. Marcus runs it and Greg approves the results by October 30.
+[00:04:00] Greg Hallman: Can I ask about the timeclock again? I raised it at kickoff and again in Slack yesterday and haven't heard anything. If there's no API, we're talking manual time imports for roughly 500 people every pay period.
+[00:04:40] Dana Whitfield: Understood, that's a real concern.
+[00:04:55] Marcus Lee: The vendor's documentation is vague on this.
+[00:05:20] Dana Whitfield: Okay. Let's keep moving and we'll revisit it.
+[00:06:00] Dana Whitfield: Anything else? No? Thanks, everyone.

@@ -1,0 +1,21 @@
+Title: Weekly Status Meeting (Oct 8)
+Type: meeting_transcript
+Date: 2026-10-08 14:00
+
+Attendees: Dana Whitfield (ADP), Marcus Lee (ADP), Tomás Rivera (ADP), Priya Raman (Riverbend), Greg Hallman (Riverbend). Sandra Okafor was not present.
+
+[00:00:25] Dana Whitfield: Let's start with the data file. Priya, where are we?
+[00:00:35] Priya Raman: Not great news. IT is still fixing duplicates and missing tax withholding fields in the export. I can get it to you by Friday, October 16.
+[00:01:00] Dana Whitfield: That's about ten days later than the October 6 date from Slack.
+[00:01:20] Dana Whitfield: Tomás, are you still good for October 9 on the tax configuration?
+[00:01:30] Tomás Rivera: If the file shows up, yes.
+[00:01:36] Dana Whitfield: Okay.
+[00:02:10] Priya Raman: Separate thing. Finance is still reviewing the final Pennsylvania headcount. I'll get you the confirmed number by October 14. It might change, and we're also planning to add about 80 employees at the Pennsylvania clinics in January.
+[00:02:45] Marcus Lee: Noted. A headcount change of more than ten percent needs a change order under the statement of work, so we should look at that once the number is final.
+[00:03:30] Dana Whitfield: I'll send a revised project plan reflecting the new data file date by tomorrow, October 9.
+[00:04:10] Marcus Lee: The parallel run is still the week of October 26.
+[00:04:25] Dana Whitfield: And go-live stays November 2 for now.
+[00:05:00] Greg Hallman: Same question as before about the timeclock vendor. Any news?
+[00:05:08] Marcus Lee: Nothing yet.
+[00:05:15] Dana Whitfield: We'll follow up.
+[00:05:40] Dana Whitfield: Great. Thanks, everyone.

@@ -1,0 +1,32 @@
+{
+  "client": {
+    "name": "Riverbend Health",
+    "go_live": "2026-11-02"
+  },
+  "people": [
+    {
+      "name": "Dana Whitfield", "side": "adp", "role": "Implementation Manager",
+      "aliases": ["Dana", "Dana W.", "D. Whitfield", "dwhitfield@adp-team.example"]
+    },
+    {
+      "name": "Marcus Lee", "side": "adp", "role": "Solutions Consultant",
+      "aliases": ["Marcus", "Marcus L.", "M. Lee", "mlee@adp-team.example"]
+    },
+    {
+      "name": "Tomás Rivera", "side": "adp", "role": "Tax Specialist",
+      "aliases": ["Tomás", "Tomas", "T. Rivera", "trivera@adp-team.example"]
+    },
+    {
+      "name": "Priya Raman", "side": "client", "role": "HR Director",
+      "aliases": ["Priya", "P. Raman", "praman@riverbendhealth.example"]
+    },
+    {
+      "name": "Greg Hallman", "side": "client", "role": "Payroll Manager",
+      "aliases": ["Greg", "Greg H.", "G. Hallman", "ghallman@riverbendhealth.example"]
+    },
+    {
+      "name": "Sandra Okafor", "side": "client", "role": "IT Lead",
+      "aliases": ["Sandra", "Sandra O.", "S. Okafor", "sokafor@riverbendhealth.example"]
+    }
+  ]
+}

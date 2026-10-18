@@ -1,0 +1,12 @@
+Title: #riverbend-implementation (Oct 9 - Oct 14)
+Type: chat
+Date: 2026-10-09 15:30
+
+[2026-10-09 15:30] Dana W.: Revised project plan is in the shared folder.
+[2026-10-12 09:05] Greg H.: Thanks Dana. Quick check: my team is planning time off around the Nov 9 go-live. Can you confirm the date?
+[2026-10-12 09:40] Dana W.: Go-live is still targeted for Nov 2.
+[2026-10-12 09:52] Greg H.: Huh. I had understood it was Nov 9. I'll check with Priya.
+[2026-10-13 10:15] Greg H.: Still nothing on the timeclock API. I've asked at kickoff, here twice, and in two status meetings. Honestly I'm losing confidence we'll be ready on any date. If we don't hear something this week I'm going to escalate to our CFO.
+[2026-10-14 17:20] praman@riverbendhealth.example: Final Pennsylvania headcount: finance hasn't signed off yet. The CFO is traveling until the 20th. I'll send the number as soon as I have it.
+[2026-10-14 17:45] Dana W.: No problem. Is the data file still on track for Friday?
+[2026-10-14 18:02] praman@riverbendhealth.example: Working on it with IT.

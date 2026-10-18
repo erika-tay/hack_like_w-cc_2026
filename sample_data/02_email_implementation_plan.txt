@@ -1,0 +1,38 @@
+Title: Implementation plan and next steps
+Type: email
+Date: 2026-09-11 16:45
+
+From: Dana Whitfield <dwhitfield@adp-team.example>
+To: Priya Raman <praman@riverbendhealth.example>; Greg Hallman <ghallman@riverbendhealth.example>; Sandra Okafor <sokafor@riverbendhealth.example>
+Cc: Marcus Lee <mlee@adp-team.example>; Tomás Rivera <trivera@adp-team.example>
+Subject: Riverbend Health - implementation plan and next steps
+
+Hi all,
+
+Thanks again for a productive kickoff. As promised, the implementation plan is attached. Key milestones:
+
+- Sep 18: Secure file transfer (SFTP) access ready (Sandra)
+- Sep 22: Complete employee data file delivered (Priya's team)
+- Oct 1: State and local tax configuration complete (Tomás)
+- Week of Oct 26: Parallel payroll cycle (Marcus)
+- Nov 2: Go-live
+
+Two things I need from you:
+1. Priya, please confirm the September 22 data file date still works.
+2. Greg, do you have a contact at your timeclock vendor? We still need to find out whether they offer an API.
+
+Pay frequency (biweekly, Friday pay dates) and overtime rules (Ohio 8-and-80, Pennsylvania weekly 40) are locked in per the kickoff.
+
+Best,
+Dana
+
+Dana Whitfield
+Implementation Manager | ADP
+Office: 555-0142 | dwhitfield@adp-team.example
+
+> On Sep 8, Priya Raman wrote:
+> Thanks Dana, looking forward to working with the team.
+
+CONFIDENTIALITY NOTICE: This email and any attachments are confidential and intended only for the named recipients. If you received this in error, please delete it and notify the sender.
+
+Sent from my iPhone

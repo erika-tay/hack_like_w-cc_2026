@@ -1,0 +1,40 @@
+{
+  "_note": "Answer key for measuring extraction accuracy. 'as_of' is the date overdue is judged against. Items marked optional are judgment calls; do not penalize a miss.",
+  "as_of": "2026-10-17",
+  "items": [
+    {"id": "e01", "type": "commitment", "summary": "Dana sends the detailed implementation plan to Priya", "owner": "Dana Whitfield", "side": "adp", "due": "2026-09-11", "status": "done", "sources": ["01_kickoff_transcript", "02_email_implementation_plan"], "required": true},
+    {"id": "e02", "type": "commitment", "summary": "Sandra provides SFTP access", "owner": "Sandra Okafor", "side": "client", "due": "2026-09-18", "status": "done", "sources": ["01_kickoff_transcript", "03_chat_early"], "required": true},
+    {"id": "e03", "type": "commitment", "summary": "Priya's team delivers the complete employee data file", "owner": "Priya Raman", "side": "client", "due": "2026-10-16", "status": "open", "overdue": true, "sources": ["00_sow_excerpt", "01_kickoff_transcript", "03_chat_early", "04_status_meeting_oct1", "05_status_meeting_oct8", "06_chat_late"], "required": true, "note": "Due date moved Sep 22 -> Oct 6 -> Oct 16. Not confirmed received as of Oct 14."},
+    {"id": "e04", "type": "commitment", "summary": "Tomás completes state and local tax configuration (Ohio, Pennsylvania)", "owner": "Tomás Rivera", "side": "adp", "due": "2026-10-09", "status": "open", "overdue": true, "sources": ["01_kickoff_transcript", "04_status_meeting_oct1", "05_status_meeting_oct8"], "required": true, "note": "Original date Oct 1, moved to Oct 9. Conditional on the data file, which was not due until Oct 16."},
+    {"id": "e05", "type": "commitment", "summary": "Check whether the timeclock vendor offers an API that supports import", "owner": null, "side": null, "due": null, "status": "open", "unowned": true, "sources": ["01_kickoff_transcript", "02_email_implementation_plan", "03_chat_early", "04_status_meeting_oct1", "05_status_meeting_oct8", "06_chat_late"], "required": true, "note": "Never assigned. Dana asked Greg for a vendor contact; Greg asked who at ADP owns it. A thumbs-up reaction is not a commitment."},
+    {"id": "e06", "type": "commitment", "summary": "Marcus runs one parallel payroll cycle the week of Oct 26", "owner": "Marcus Lee", "side": "adp", "due": "2026-10-26", "status": "open", "sources": ["00_sow_excerpt", "04_status_meeting_oct1", "05_status_meeting_oct8"], "required": true},
+    {"id": "e07", "type": "commitment", "summary": "Greg reviews parallel run results and signs off", "owner": "Greg Hallman", "side": "client", "due": "2026-10-30", "status": "open", "sources": ["04_status_meeting_oct1"], "required": true},
+    {"id": "e08", "type": "commitment", "summary": "Dana sends revised project plan reflecting the new data file date", "owner": "Dana Whitfield", "side": "adp", "due": "2026-10-09", "status": "done", "sources": ["05_status_meeting_oct8", "06_chat_late"], "required": true},
+    {"id": "e09", "type": "commitment", "summary": "Priya provides confirmed Pennsylvania headcount from finance", "owner": "Priya Raman", "side": "client", "due": "2026-10-14", "status": "open", "overdue": true, "sources": ["05_status_meeting_oct8", "06_chat_late"], "required": true, "note": "Priya said finance has not signed off and gave no new date."},
+
+    {"id": "e10", "type": "decision", "summary": "Biweekly pay with Friday pay dates", "rationale": "Keeps the current schedule so no one's pay date changes", "sources": ["01_kickoff_transcript", "02_email_implementation_plan"], "required": true},
+    {"id": "e11", "type": "decision", "summary": "Ohio uses 8-and-80 overtime; Pennsylvania uses weekly 40", "rationale": "Changing Ohio nurses' overtime at go-live would change their paychecks overnight", "sources": ["01_kickoff_transcript", "02_email_implementation_plan"], "required": true},
+    {"id": "e12", "type": "decision", "summary": "Run one full parallel payroll cycle before go-live", "rationale": "Lets Riverbend compare results before the first live payroll, where mistakes are expensive", "sources": ["00_sow_excerpt", "04_status_meeting_oct1"], "required": true},
+
+    {"id": "e13", "type": "risk", "severity": "high", "summary": "Employee data file is late and threatens the Nov 2 go-live", "sources": ["00_sow_excerpt", "03_chat_early", "05_status_meeting_oct8", "06_chat_late"], "required": true, "note": "SOW section 6 requires a written revised go-live date once the delay exceeds five business days."},
+    {"id": "e14", "type": "risk", "severity": "high", "summary": "Timeclock API unconfirmed after repeated asks; may force manual time imports for about 500 employees each pay period", "sources": ["01_kickoff_transcript", "04_status_meeting_oct1", "06_chat_late"], "required": true, "note": "SOW 5.3 already defines file import as the fallback, which reduces the impact."},
+    {"id": "e15", "type": "risk", "severity": "high", "summary": "Client payroll manager is losing confidence and threatens to escalate to the CFO", "sources": ["06_chat_late"], "required": true},
+    {"id": "e16", "type": "risk", "severity": "medium", "summary": "Client believes go-live is Nov 9, not Nov 2", "sources": ["06_chat_late"], "required": true},
+    {"id": "e17", "type": "risk", "severity": "medium", "summary": "Pennsylvania headcount unconfirmed; a change over 10% requires a change order", "sources": ["00_sow_excerpt", "05_status_meeting_oct8", "06_chat_late"], "required": true},
+    {"id": "e18", "type": "risk", "severity": "medium", "summary": "Tax configuration due Oct 9 cannot happen before the data file arrives Oct 16, and the parallel run starts Oct 26", "sources": ["01_kickoff_transcript", "05_status_meeting_oct8"], "required": false},
+    {"id": "e19", "type": "risk", "severity": "low", "summary": "Real employee data (SSN, DOB, salary) was pasted into a chat channel", "sources": ["03_chat_early"], "required": false},
+
+    {"id": "e20", "type": "opportunity", "summary": "Add benefits enrollment to the same system after this phase", "sources": ["00_sow_excerpt", "01_kickoff_transcript"], "required": true},
+    {"id": "e21", "type": "opportunity", "summary": "About 80 new Pennsylvania employees expected in January", "sources": ["05_status_meeting_oct8"], "required": true}
+  ],
+  "contradictions": [
+    {"topic": "Employee data file due date", "claims": [
+      {"source": "03_chat_early", "who": "Priya / Dana", "says": "Oct 6"},
+      {"source": "04_status_meeting_oct1", "who": "Dana", "says": "Oct 8"}
+    ]},
+    {"topic": "Go-live date", "claims": [
+      {"source": "00_sow_excerpt, 01_kickoff_transcript, 06_chat_late", "who": "Contract, Dana", "says": "Nov 2"},
+      {"source": "06_chat_late", "who": "Greg", "says": "Nov 9"}
+    ]}
+  ]
+}

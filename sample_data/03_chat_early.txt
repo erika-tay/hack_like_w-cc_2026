@@ -1,0 +1,14 @@
+Title: #riverbend-implementation (Sep 18 - Oct 2)
+Type: chat
+Date: 2026-09-18 09:12
+
+[2026-09-18 09:12] Sandra O.: SFTP access is live. I sent the credentials to Dana separately.
+[2026-09-18 09:15] Dana W.: Got them, thanks Sandra! 🙏
+[2026-09-24 14:03] praman@riverbendhealth.example: Heads up, the employee data file is going to be late. We found duplicate records in the HRIS export and IT is cleaning them up. I should have it by Oct 6. Is that OK?
+[2026-09-24 14:21] Dana W.: Thanks for flagging early. We'll work with Oct 6.
+[2026-09-30 11:40] Greg H.: Any update on the timeclock API question? I still don't know who on the ADP side owns it.
+[2026-09-30 11:55] Marcus L.: 👍
+[2026-10-01 16:02] Greg H.: What format do you want the data file in? Here's a sample row from the export so you can see what we have:
+EMP-10482 | Jane Doe | SSN 123-45-6789 | DOB 04/12/1988 | Salary $84,500 | jane.doe@riverbendhealth.example | 614-555-0177
+[2026-10-01 16:10] Marcus L.: Format works. Please don't paste real employee data in chat though, use SFTP for anything like that.
+[2026-10-02 10:30] Greg H.: Bumping the timeclock question again. That's the third time I'm asking. Our contract with the vendor renews soon and we need to know whether the API exists.

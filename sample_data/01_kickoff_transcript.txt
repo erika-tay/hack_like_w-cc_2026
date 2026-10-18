@@ -1,0 +1,25 @@
+Title: Riverbend Health - Implementation Kickoff
+Type: meeting_transcript
+Date: 2026-09-08 10:00
+
+Attendees: Dana Whitfield (ADP, Implementation Manager), Marcus Lee (ADP, Solutions Consultant), Tomás Rivera (ADP, Tax Specialist), Priya Raman (Riverbend, HR Director), Greg Hallman (Riverbend, Payroll Manager), Sandra Okafor (Riverbend, IT Lead)
+
+[00:00:12] Dana Whitfield: Thanks everyone for joining. The goal today is to align on scope and timeline. We're moving about 500 employees across Riverbend Medical Center in Ohio and the Riverbend Clinics in Pennsylvania onto payroll and time and attendance, with a target go-live of November 2.
+[00:01:05] Priya Raman: Right. Benefits enrollment is a separate conversation. Eventually we'd like it in the same system, but not in this phase.
+[00:01:30] Dana Whitfield: Understood. We'll keep that out of scope for now and revisit it after go-live.
+[00:02:10] Greg Hallman: On pay frequency, we're biweekly today, paid on Fridays. I'd like to keep that.
+[00:02:25] Dana Whitfield: That makes sense, and keeping the same schedule means nobody's pay date changes. So, biweekly with Friday pay dates.
+[00:02:40] Priya Raman: Confirmed.
+[00:03:20] Marcus Lee: Overtime is next. Your Ohio nurses are on the 8-and-80 arrangement today. Do you want to carry that over?
+[00:03:40] Greg Hallman: Yes, Ohio keeps 8-and-80. If we changed it at go-live, nurses' paychecks would change overnight and we'd hear about it for weeks. Pennsylvania is standard weekly 40.
+[00:04:05] Marcus Lee: Okay, Ohio on 8-and-80 and Pennsylvania on weekly 40. I'll configure it that way.
+[00:05:10] Tomás Rivera: On taxes, Ohio has local city income taxes and Pennsylvania has the local earned income tax, so the setup is fiddly. It takes me about a week once I have the employee data file. I can have the state and local tax configuration done by October 1, as long as the file arrives in time.
+[00:05:45] Dana Whitfield: Priya, when can your team get us that file?
+[00:05:52] Priya Raman: We can have it to you by September 22.
+[00:06:00] Dana Whitfield: Great. That's ten business days from today, which matches the statement of work. Sandra, we'll also need secure file transfer set up.
+[00:06:20] Sandra Okafor: I'll have SFTP access ready by September 18.
+[00:07:15] Marcus Lee: One open item is time and attendance. Riverbend uses a timeclock system, and whether we can import hours automatically depends on whether the vendor offers an API. Someone should check with the vendor.
+[00:07:40] Greg Hallman: I'm not sure who our contact is there.
+[00:07:50] Dana Whitfield: Let's circle back on that.
+[00:08:30] Dana Whitfield: Last thing from me: I'll send the detailed implementation plan to Priya by Friday, September 11. Anything else from anyone?
+[00:08:50] Priya Raman: Not from us. Thanks, everyone.

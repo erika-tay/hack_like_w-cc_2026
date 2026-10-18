@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handoff</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ground: #f3f5f8;
+  --panel: #ffffff;
+  --ink: #17203a;
+  --ink-soft: #55607a;
+  --line: #dde2ec;
+  --adp: #2a4bb8;
+  --adp-wash: #e8edfb;
+  --client: #0c7a64;
+  --client-wash: #e2f3ee;
+  --late: #c4301c;
+  --late-wash: #fbe9e5;
+  --nobody: #a86a0a;
+  --nobody-wash: #fbf1dc;
+  --radius: 10px;
+  --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html { background: var(--ground); }
+body { margin: 0; font: 400 16px/1.5 var(--font); color: var(--ink); font-variant-numeric: tabular-nums; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #7d98f0; outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+/* header */
+header { background: var(--ink); color: #fff; }
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-top: 14px; padding-bottom: 14px; }
+.brand { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+.clientline { flex: 1 1 260px; color: #c7cee3; font-size: 15px; }
+.clientline b { color: #fff; font-weight: 600; }
+.seg { display: inline-flex; border: 1px solid #3b4670; border-radius: 8px; overflow: hidden; }
+.seg button { background: transparent; border: 0; color: #c7cee3; padding: 7px 14px; font-weight: 500; }
+.seg button[aria-pressed="true"] { background: #fff; color: var(--ink); font-weight: 700; }
+.aiswitch { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid #3b4670; color: #fff; border-radius: 8px; padding: 7px 12px; font-weight: 500; }
+.aiswitch i { width: 10px; height: 10px; border-radius: 50%; background: #55d6a8; }
+.aiswitch[aria-pressed="false"] i { background: #8a93ad; }
+
+/* banners */
+.banner { padding: 10px 0; font-size: 15px; }
+.banner .wrap { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+.banner.off { background: var(--nobody-wash); color: #5c3a00; border-bottom: 1px solid #ecd9ae; }
+.banner.queue { background: var(--adp-wash); color: #1d3585; border-bottom: 1px solid #c9d4f5; }
+.banner.error { background: var(--late-wash); color: #7b1d10; border-bottom: 1px solid #f0c3ba; }
+.btn { background: var(--ink); color: #fff; border: 0; border-radius: 8px; padding: 9px 16px; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn.small { padding: 5px 11px; font-size: 14px; }
+.btn[disabled] { opacity: .55; cursor: progress; }
+
+/* ask */
+.ask { padding: 26px 0 8px; }
+.askform { display: flex; gap: 10px; }
+.askform input { flex: 1; min-width: 0; font-size: 18px; padding: 14px 16px; border: 1.5px solid var(--ink); border-radius: var(--radius); background: var(--panel); }
+.askform .btn { font-size: 17px; padding: 0 26px; }
+.suggest { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+.suggest button { background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 14px; color: var(--ink-soft); }
+.suggest button:hover { border-color: var(--ink); color: var(--ink); }
+.answer { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--adp); border-radius: var(--radius); padding: 18px 22px; margin-top: 16px; }
+.answer.kw { border-left-color: var(--nobody); }
+.answer .text { font-size: 18px; line-height: 1.55; max-width: 74ch; margin: 0 0 12px; }
+.answer .warn { color: #7b1d10; background: var(--late-wash); padding: 8px 12px; border-radius: 6px; margin: 0 0 12px; font-size: 15px; }
+.answer .note { color: #5c3a00; background: var(--nobody-wash); padding: 8px 12px; border-radius: 6px; margin: 0 0 12px; font-size: 15px; }
+blockquote.cite { margin: 10px 0 0; padding: 2px 0 2px 14px; border-left: 3px solid var(--line); max-width: 80ch; }
+blockquote.cite q { quotes: none; display: block; font-size: 15px; }
+blockquote.cite cite { display: block; font-style: normal; font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+blockquote.cite mark, .hit mark { background: #ffe8a3; padding: 0 2px; border-radius: 2px; }
+.linklike { background: none; border: 0; padding: 0; color: var(--adp); text-decoration: underline; text-underline-offset: 2px; }
+.itemref { background: var(--adp-wash); color: var(--adp); border: 0; border-radius: 4px; padding: 0 6px; font-size: .85em; font-weight: 600; }
+
+/* runway */
+.runway { padding: 22px 0 6px; }
+.runway h1 { font-size: 26px; line-height: 1.25; letter-spacing: -0.015em; margin: 0 0 4px; font-weight: 700; max-width: 62ch; }
+.runway h1 .bad { color: var(--late); }
+.runway .sub { margin: 0 0 14px; color: var(--ink-soft); }
+.runwaybox { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px 6px; overflow-x: auto; }
+.runwaybox svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.runwaybox text { font-family: var(--font); font-size: 12px; fill: var(--ink-soft); }
+.runwaybox .lane { font-weight: 600; fill: var(--ink); }
+.runwaybox a { cursor: pointer; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-soft); margin: 8px 2px 0; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; background: var(--c, var(--ink)); box-shadow: inset 0 0 0 1.5px var(--b, transparent); }
+
+/* layout */
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 28px; padding: 22px 0 60px; align-items: start; }
+@media (max-width: 960px) { .main { grid-template-columns: 1fr; } .rail { order: -1; } }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.tabs button { background: none; border: 0; padding: 10px 14px; font-weight: 500; color: var(--ink-soft); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
+.tabs small { color: var(--ink-soft); font-weight: 500; margin-left: 4px; }
+
+/* commitments */
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 1100px) { .cols { grid-template-columns: 1fr; } }
+.col h2 { font-size: 16px; margin: 0 0 8px; font-weight: 700; display: flex; align-items: baseline; gap: 8px; }
+.col h2 small { color: var(--ink-soft); font-weight: 500; }
+.col .bar { height: 4px; border-radius: 2px; margin-bottom: 10px; background: var(--c); }
+.col.adp { --c: var(--adp); } .col.client { --c: var(--client); } .col.nobody { --c: var(--nobody); }
+.empty { color: var(--ink-soft); font-size: 15px; padding: 8px 0; }
+details.row { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--c, var(--line)); border-radius: 8px; margin-bottom: 8px; }
+details.row.late { border-left-color: var(--late); }
+details.row.flash { box-shadow: 0 0 0 3px #ffd36b; }
+details.row > summary { list-style: none; padding: 11px 13px; cursor: pointer; }
+details.row > summary::-webkit-details-marker { display: none; }
+.row .what { font-weight: 600; line-height: 1.35; margin: 0 0 6px; }
+.row .meta { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; font-size: 14px; color: var(--ink-soft); }
+.tag { border-radius: 4px; padding: 1px 7px; font-size: 13px; font-weight: 600; }
+.tag.late { background: var(--late-wash); color: var(--late); }
+.tag.none { background: var(--nobody-wash); color: var(--nobody); }
+.tag.soon { background: var(--adp-wash); color: var(--adp); }
+.tag.backup { background: #eceff5; color: var(--ink-soft); }
+.dates s { color: #8c95ab; margin-right: 6px; text-decoration-thickness: 1.5px; }
+.dates b { color: var(--ink); }
+.evidence { padding: 0 13px 12px; }
+.evidence h3 { font-size: 13px; margin: 6px 0 0; color: var(--ink-soft); font-weight: 600; }
+.doneblock { margin-top: 20px; }
+.doneblock summary { cursor: pointer; color: var(--ink-soft); font-weight: 600; }
+.doneblock li { margin: 4px 0; color: var(--ink-soft); }
+
+/* risks, decisions, changes, docs */
+.stack { display: grid; gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 13px 16px; border-left: 6px solid var(--c, var(--line)); }
+.card.flash { box-shadow: 0 0 0 3px #ffd36b; }
+.card .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.card .head b { font-size: 17px; line-height: 1.35; flex: 1 1 280px; }
+.sev { font-size: 13px; font-weight: 700; }
+.sev.high { color: var(--late); } .sev.medium { color: var(--nobody); } .sev.low { color: var(--ink-soft); }
+.card.high { --c: var(--late); } .card.medium { --c: var(--nobody); } .card.low { --c: #aab2c5; } .card.decision { --c: var(--adp); } .card.opp { --c: var(--client); }
+.why { margin: 6px 0 0; color: var(--ink-soft); max-width: 70ch; }
+h2.sec { font-size: 18px; margin: 26px 0 10px; }
+.changes { display: grid; grid-template-columns: 110px 1fr; gap: 0 18px; }
+.changes dt { font-weight: 700; padding: 10px 0; border-top: 1px solid var(--line); }
+.changes dd { margin: 0; padding: 10px 0; border-top: 1px solid var(--line); }
+.changes dd p { margin: 0 0 6px; }
+.changes small { color: var(--ink-soft); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; color: var(--ink-soft); }
+table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+th { text-align: left; font-size: 13px; color: var(--ink-soft); font-weight: 600; padding: 8px 12px; background: #f8f9fb; }
+td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+td button.linklike { text-align: left; font-weight: 600; }
+.state { font-weight: 600; font-size: 14px; }
+.state.pending { color: var(--nobody); } .state.failed { color: var(--late); } .state.done { color: var(--client); }
+form.newdoc { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 10px; margin-top: 10px; }
+form.newdoc .r { display: grid; grid-template-columns: minmax(0, 1fr) 170px 210px; gap: 10px; }
+@media (max-width: 700px) { form.newdoc .r { grid-template-columns: 1fr; } }
+form.newdoc label { display: grid; gap: 3px; font-size: 14px; font-weight: 600; }
+form.newdoc input, form.newdoc select, form.newdoc textarea { width: 100%; min-width: 0; border: 1px solid #b9c1d3; border-radius: 6px; padding: 8px 10px; font-weight: 400; background: #fff; }
+form.newdoc textarea { min-height: 130px; resize: vertical; }
+.result { background: var(--client-wash); border: 1px solid #b8e0d4; border-radius: 6px; padding: 10px 12px; font-size: 15px; }
+
+/* rail */
+.rail { position: sticky; top: 14px; display: grid; gap: 18px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; }
+.panel h2 { font-size: 17px; margin: 0 0 10px; }
+.act { padding: 10px 0; border-top: 1px solid var(--line); }
+.act:first-of-type { border-top: 0; padding-top: 0; }
+.act p { margin: 0; }
+.act .do { font-weight: 600; line-height: 1.35; }
+.act .because { color: var(--ink-soft); font-size: 14px; margin-top: 3px; }
+.act .urg { font-size: 13px; font-weight: 700; color: var(--late); }
+.act .urg.this_week { color: var(--nobody); } .act .urg.soon { color: var(--ink-soft); }
+.panel .note { font-size: 14px; color: #5c3a00; background: var(--nobody-wash); padding: 6px 10px; border-radius: 6px; margin: 0 0 8px; }
+
+/* dialogs */
+dialog { border: 0; border-radius: 12px; padding: 0; width: min(880px, calc(100vw - 24px)); max-height: calc(100vh - 40px); box-shadow: 0 20px 60px rgba(10, 20, 50, .35); color: var(--ink); }
+dialog::backdrop { background: rgba(15, 22, 44, .55); }
+.dlg { padding: 22px 26px 24px; }
+.dlg header { background: none; color: inherit; display: flex; gap: 12px; align-items: baseline; }
+.dlg h2 { margin: 0; font-size: 22px; flex: 1; }
+.dlg .lead { font-size: 18px; margin: 6px 0 16px; max-width: 68ch; }
+.dlg h3 { font-size: 16px; margin: 18px 0 4px; }
+.dlg ul { margin: 0; padding-left: 20px; }
+.dlg li { margin: 4px 0; max-width: 78ch; }
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+@media (max-width: 700px) { .ba { grid-template-columns: 1fr; } }
+.ba h3 { margin: 0 0 6px; }
+.ba pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 400 13.5px/1.5 var(--font); background: #f8f9fb; border: 1px solid var(--line); border-radius: 8px; padding: 12px; max-height: 52vh; overflow: auto; }
+.ba mark.pii { background: #ffd9d2; color: #7b1d10; border-radius: 3px; padding: 0 2px; }
+.ba mark.red { background: var(--ink); color: #fff; border-radius: 3px; padding: 0 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="brand">Handoff</span>
+    <div class="clientline" id="clientline">Loading…</div>
+    <div class="seg" role="group" aria-label="Who is looking">
+      <button id="v-adp" aria-pressed="true">ADP team</button>
+      <button id="v-client" aria-pressed="false">Client portal</button>
+    </div>
+    <button class="aiswitch" id="aiswitch" aria-pressed="true" title="Turn the AI off to see the app keep working without it"><i></i><span id="aitext">AI on</span></button>
+  </div>
+</header>
+<div id="banners"></div>
+
+<main class="wrap">
+  <section class="ask" id="askzone" aria-label="Ask a question">
+    <form class="askform" id="askform">
+      <label class="sr" for="q">Question</label>
+      <input id="q" autocomplete="off" placeholder="Ask anything about this client. Every answer shows its sources." maxlength="500">
+      <button class="btn" id="askbtn" type="submit">Ask</button>
+    </form>
+    <ul class="suggest" id="suggest"></ul>
+    <div id="answer" aria-live="polite"></div>
+  </section>
+
+  <section class="runway" aria-label="Runway to go-live">
+    <h1 id="headline"></h1>
+    <p class="sub" id="subline"></p>
+    <div class="runwaybox"><div id="runway"></div></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <div class="main">
+    <div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div id="tabpanel" role="tabpanel"></div>
+    </div>
+    <aside class="rail" id="rail"></aside>
+  </div>
+</main>
+
+<dialog id="dlg"><div class="dlg" id="dlgbody"></div></dialog>
+
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+
+/* ---------- small helpers: build DOM with text nodes only, so document text can never run as HTML ---------- */
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k === "text") el.textContent = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat(Infinity)) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(kid));
+  return el;
+}
+const svg = (tag, attrs, ...kids) => {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+  for (const kid of kids.flat(Infinity)) if (kid) el.append(kid.nodeType ? kid : document.createTextNode(kid));
+  return el;
+};
+const clear = (el) => { el.replaceChildren(); return el; };
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const toDate = (s) => (s ? new Date(s.slice(0, 10) + "T12:00:00") : null);
+const fmt = (s) => { const d = toDate(s); return d ? `${MONTHS[d.getMonth()]} ${d.getDate()}` : "no date"; };
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+const dayMs = 86400000;
+
+async function api(path, body) {
+  const res = await fetch(path, body === undefined ? {} : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  if (!res.ok) {
+    let msg = `${res.status}`;
+    try { const j = await res.json(); msg = typeof j.detail === "string" ? j.detail : JSON.stringify(j.detail); } catch (e) {}
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+/* ---------- state ---------- */
+const S = { view: "adp", tab: "commitments", status: null, board: null, risks: [], decisions: [], opps: [], docs: [], timeline: [],
+            since: "7", actions: null, index: new Map(), busy: false, error: null };
+
+const TABS = {
+  adp: [["commitments", "Commitments"], ["risks", "Risks"], ["decisions", "Decisions and opportunities"], ["changes", "What changed"], ["documents", "Documents"]],
+  client: [["commitments", "Commitments"], ["decisions", "Decisions"]],
+};
+const SUGGESTIONS = ["What is overdue, and who owns it?", "Why did the data file date keep moving?", "Where do we stand on the timeclock API?", "What did we decide about overtime?"];
+
+/* ---------- loading ---------- */
+async function loadAll() {
+  try {
+    S.error = null;
+    const v = S.view;
+    const [status, board, decisions, docs] = await Promise.all([api("/api/status"), api(`/api/board?view=${v}`), api("/api/decisions"), api("/api/documents")]);
+    Object.assign(S, { status, board, decisions, docs });
+    if (v === "adp") {
+      [S.risks, S.opps] = await Promise.all([api("/api/risks"), api("/api/opportunities")]);
+      S.timeline = await api("/api/timeline");
+    } else { S.risks = []; S.opps = []; S.timeline = []; }
+    S.index = new Map();
+    for (const col of Object.values(board.columns)) for (const it of col) S.index.set(it.id, { type: "commitment", it });
+    for (const it of board.done) S.index.set(it.id, { type: "commitment", it });
+    for (const it of S.risks) S.index.set(it.id, { type: "risk", it });
+    for (const it of S.decisions) S.index.set(it.id, { type: "decision", it });
+    for (const it of S.opps) S.index.set(it.id, { type: "opportunity", it });
+  } catch (e) { S.error = e.message; }
+  renderAll();
+  if (S.view === "adp" && !S.error) loadActions();
+}
+
+async function loadActions() {
+  S.actions = null; renderRail();
+  try { S.actions = await api("/api/next-actions"); } catch (e) { S.actions = { actions: [], notice: e.message, mode: "rules" }; }
+  renderRail();
+}
+
+/* ---------- rendering ---------- */
+function renderAll() { renderHeader(); renderBanners(); renderAsk(); renderRunway(); renderTabs(); renderRail(); }
+
+function renderHeader() {
+  const b = S.board;
+  $("#clientline").replaceChildren(b ? h("span", {}, h("b", { text: b.client.name }), ` payroll and time rollout, as of ${fmt(b.as_of)}`) : "Loading…");
+  $("#v-adp").setAttribute("aria-pressed", S.view === "adp");
+  $("#v-client").setAttribute("aria-pressed", S.view === "client");
+  const on = S.status ? S.status.ai.enabled : true;
+  $("#aiswitch").setAttribute("aria-pressed", on);
+  $("#aitext").textContent = on ? "AI on" : "AI off";
+  $("#askzone").hidden = S.view === "client";
+}
+
+function renderBanners() {
+  const box = clear($("#banners"));
+  if (S.error) box.append(h("div", { class: "banner error" }, h("div", { class: "wrap" }, `Couldn't load: ${S.error}. Is the server running, and did you run seed.py?`, h("button", { class: "btn small", onclick: loadAll, text: "Try again" }))));
+  if (!S.status) return;
+  if (!S.status.ai.enabled) box.append(h("div", { class: "banner off" }, h("div", { class: "wrap" }, "The AI is off. The board, runway, search and backup extraction still work from stored data. New documents wait in the queue.")));
+  else if (S.status.pending_docs > 0) box.append(h("div", { class: "banner queue" }, h("div", { class: "wrap" },
+    `${plural(S.status.pending_docs, "document")} waiting for the AI.`, h("button", { class: "btn small", id: "procbtn", onclick: processQueue, text: "Process now" }))));
+}
+
+/* --- ask --- */
+function renderAsk() {
+  const ul = clear($("#suggest"));
+  for (const q of SUGGESTIONS) ul.append(h("li", {}, h("button", { type: "button", text: q, onclick: () => { $("#q").value = q; askNow(q); } })));
+}
+async function askNow(q) {
+  const box = clear($("#answer"));
+  if (!q.trim()) return;
+  $("#askbtn").disabled = true;
+  box.append(h("div", { class: "answer" }, h("p", { class: "text", text: "Reading the documents…" })));
+  try { showAnswer(await api("/api/ask", { question: q, view: S.view })); }
+  catch (e) { clear(box).append(h("div", { class: "answer kw" }, h("p", { class: "warn", text: `That didn't work: ${e.message}` }))); }
+  $("#askbtn").disabled = false;
+}
+function refChip(id, after) {
+  const hit = S.index.get(id);
+  return h("button", { class: "itemref", type: "button", text: `item ${id}`, title: hit ? hit.it.summary : "", onclick: () => { if (after) after(); focusItem(id); } });
+}
+function withRefs(text) {
+  return text.split(/(\[#\d+\])/).map((part) => {
+    const m = part.match(/^\[#(\d+)\]$/);
+    return m ? refChip(+m[1]) : part;
+  });
+}
+function cite(c) {
+  return h("blockquote", { class: "cite" }, h("q", { text: c.quote }),
+    h("cite", {}, `${c.title}, ${fmt(c.date)} `, h("button", { class: "linklike", type: "button", text: "open document", onclick: () => openDoc(c.doc_id) })));
+}
+function highlight(text, terms) {
+  const t = (terms || []).filter((x) => x.length > 2);
+  if (!t.length) return [text];
+  const re = new RegExp(`((?:${t.map((x) => x.slice(0, 5).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})\\w*)`, "ig");   // whole words that start with a search term
+  return text.split(re).map((p, i) => (i % 2 ? h("mark", { text: p }) : p));
+}
+function showAnswer(a) {
+  const box = clear($("#answer"));
+  if (a.mode === "ai") {
+    box.append(h("div", { class: "answer" },
+      h("p", { class: "text" }, withRefs(a.answer)),
+      a.unverified ? h("p", { class: "warn", text: "None of the quotes the AI gave could be found in the documents, so treat this answer as unverified." }) : null,
+      a.citations.map(cite)));
+  } else {
+    box.append(h("div", { class: "answer kw" },
+      h("p", { class: "note", text: a.notice }),
+      a.hits.length ? h("div", {}, h("b", { text: "Matching passages" }), a.hits.map((x) => h("blockquote", { class: "cite hit" }, h("q", {}, highlight(x.snippet, a.terms)),
+        h("cite", {}, `${x.title}, ${fmt(x.date)} `, h("button", { class: "linklike", type: "button", text: "open document", onclick: () => openDoc(x.doc_id) }))))) : h("p", { text: "No passages matched those words." }),
+      a.items.length ? h("div", { style: "margin-top:12px" }, h("b", { text: "Related items" }), h("ul", {}, a.items.map((i) => h("li", {}, h("button", { class: "linklike", type: "button", text: i.summary, onclick: () => focusItem(i.id) }), i.extracted_by === "rules" ? " (backup)" : "")))) : null));
+  }
+}
+
+/* --- runway: the signature view. Lanes by side, today and go-live lines, dashed trails where a date has moved. --- */
+function renderRunway() {
+  const b = S.board, box = clear($("#runway")), head = $("#headline"), sub = $("#subline");
+  if (!b) { head.textContent = ""; sub.textContent = ""; return; }
+  const c = b.counts, cl = b.client;
+  const days = cl.days_to_go_live;
+  head.replaceChildren(
+    days == null ? "Go-live date not set." : days >= 0 ? `${plural(days, "day")} to go-live. ` : `Go-live was ${plural(-days, "day")} ago. `,
+    c.overdue ? h("span", { class: "bad", text: `${plural(c.overdue, "commitment")} ${c.overdue === 1 ? "is" : "are"} overdue` }) : "Nothing is overdue",
+    c.unowned ? `, and ${plural(c.unowned, "item")} ${c.unowned === 1 ? "has" : "have"} no owner.` : ".");
+  sub.textContent = `${plural(c.open_commitments, "open commitment")}; ${c.slipped} ${c.slipped === 1 ? "has" : "have"} had a due date move.` + (c.done ? ` ${c.done} done.` : "");
+
+  const lanes = [["adp", "ADP", "var(--adp)"], ["client", cl.name.split(" ")[0], "var(--client)"], ["unassigned", "Nobody", "var(--nobody)"]];
+  const items = lanes.flatMap(([k]) => b.columns[k].map((it) => ({ it, lane: k })));
+  const dates = [b.as_of, cl.go_live, ...items.flatMap(({ it }) => [it.due_date, ...it.due_history])].filter(Boolean).map(toDate);
+  const t0 = new Date(Math.min(...dates) - 4 * dayMs), t1 = new Date(Math.max(...dates) + 5 * dayMs);
+  const W = 1000, L = 112, R = 24, top = 36, laneH = 72, H = top + laneH * 3 + 26;
+  const x = (d) => L + ((d - t0) / (t1 - t0)) * (W - L - R);
+  const root = svg("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Commitments on a timeline from today to go-live" });
+
+  lanes.forEach(([k, name, col], i) => {
+    const y = top + laneH * i;
+    root.append(svg("rect", { x: L, y, width: W - L - R, height: laneH - 6, rx: 6, fill: i % 2 ? "#f6f8fb" : "#fbfcfd" }));
+    root.append(svg("text", { x: 8, y: y + laneH / 2 - 2, class: "lane" }, name.length > 14 ? name.slice(0, 13) + "…" : name));
+  });
+  for (let d = new Date(t0); d <= t1; d = new Date(+d + 7 * dayMs)) {
+    root.append(svg("line", { x1: x(d), x2: x(d), y1: top - 4, y2: top + laneH * 3 - 6, stroke: "#e4e8f0" }));
+    root.append(svg("text", { x: x(d), y: H - 6, "text-anchor": "middle" }, fmt(d.toISOString())));
+  }
+  const today = toDate(b.as_of), go = toDate(cl.go_live);
+  if (go) {
+    root.append(svg("line", { x1: x(go), x2: x(go), y1: 14, y2: top + laneH * 3 - 6, stroke: "var(--ink)", "stroke-width": 2 }));
+    root.append(svg("text", { x: x(go) - 6, y: 12, "text-anchor": "end", style: "font-weight:700;fill:var(--ink)" }, `go-live ${fmt(cl.go_live)}`));
+  }
+  root.append(svg("line", { x1: x(today), x2: x(today), y1: 14, y2: top + laneH * 3 - 6, stroke: "var(--late)", "stroke-width": 2, "stroke-dasharray": "5 4" }));
+  root.append(svg("text", { x: x(today) + 6, y: 12, style: "font-weight:700;fill:var(--late)" }, "today"));
+
+  const placed = { adp: [], client: [], unassigned: [] };   // label extents per lane, so labels never overlap
+  for (const { it, lane } of items) {
+    const li = lanes.findIndex(([k]) => k === lane), col = lanes[li][2], cy = top + laneH * li + 24;
+    const dated = !!it.due_date, cx = dated ? x(toDate(it.due_date)) : x(today) + 40;
+    const first = it.owner ? it.owner.name.split(" ")[0] : "no owner";
+    const half = first.length * 3.4 + 4;
+    let row = 0;
+    while (placed[lane].some((p) => p.row === row && cx + half > p.l && cx - half < p.r)) row++;
+    placed[lane].push({ l: cx - half, r: cx + half, row });
+    const ly = cy + 22 + row * 12;
+    const g = svg("a", { tabindex: 0, role: "link", "aria-label": `${it.summary}, ${dated ? "due " + fmt(it.due_date) : "no due date"}` });
+    g.append(svg("title", {}, `${it.summary}\n${dated ? "Due " + fmt(it.due_date) : "No due date"}${it.overdue ? ` (${plural(it.days_overdue, "day")} overdue)` : ""}${it.slips ? `\nMoved ${it.slips}x: ${it.due_history.map(fmt).join(" > ")}` : ""}`));
+    if (it.due_history.length > 1) {
+      const xs = it.due_history.map((d) => x(toDate(d)));
+      g.append(svg("line", { x1: Math.min(...xs), x2: Math.max(...xs), y1: cy, y2: cy, stroke: col, "stroke-width": 2, "stroke-dasharray": "3 4", opacity: 0.6 }));
+      it.due_history.slice(0, -1).forEach((d) => g.append(svg("circle", { cx: x(toDate(d)), cy, r: 4, fill: "#fff", stroke: col, "stroke-width": 1.5, opacity: 0.8 })));
+    }
+    g.append(svg("circle", { cx, cy, r: dated ? 8 : 8, fill: dated ? col : "#fff", stroke: it.overdue ? "var(--late)" : col, "stroke-width": it.overdue ? 4 : 2, "stroke-dasharray": dated ? "" : "3 2" }));
+    g.append(svg("text", { x: cx, y: ly, "text-anchor": "middle", style: it.overdue ? "fill:var(--late);font-weight:700" : "" }, first));
+    const go2 = () => focusItem(it.id);
+    g.addEventListener("click", go2); g.addEventListener("keydown", (e) => { if (e.key === "Enter") go2(); });
+    root.append(g);
+  }
+  box.append(root);
+  clear($("#legend")).append(
+    h("span", { style: "--c:var(--ink)", text: "filled dot: current due date" }),
+    h("span", { style: "--c:var(--late)", text: "red ring: overdue" }),
+    h("span", { style: "--c:#fff;--b:var(--ink)", text: "small hollow dots joined by a dashed line: where the date used to be" }),
+    h("span", { style: "--c:var(--nobody)", text: "dashed circle: no due date yet" }));
+}
+
+/* --- tabs --- */
+function renderTabs() {
+  const tabs = clear($("#tabs"));
+  const list = TABS[S.view];
+  if (!list.some(([k]) => k === S.tab)) S.tab = "commitments";
+  for (const [k, label] of list) {
+    const count = { risks: S.risks.length, documents: S.docs.length }[k];
+    tabs.append(h("button", { role: "tab", "aria-selected": S.tab === k, onclick: () => { S.tab = k; renderTabs(); } }, label, count ? h("small", { text: count }) : null));
+  }
+  const p = clear($("#tabpanel"));
+  ({ commitments: tabCommitments, risks: tabRisks, decisions: tabDecisions, changes: tabChanges, documents: tabDocuments }[S.tab])(p);
+}
+
+function sources(it) {
+  if (!it.sources.length) return null;
+  return h("div", { class: "evidence" }, h("h3", { text: `Where this came from (${plural(it.sources.length, "mention")})` }),
+    it.sources.map((s) => h("blockquote", { class: "cite" }, h("q", { text: s.quote }),
+      h("cite", {}, `${s.title}, ${fmt(s.date)} `, S.view === "adp" ? h("button", { class: "linklike", type: "button", text: "open document", onclick: () => openDoc(s.doc_id) }) : null))));
+}
+
+function commitmentRow(it, laneClass) {
+  const dates = it.due_history.length > 1
+    ? h("span", { class: "dates" }, it.due_history.slice(0, -1).map((d) => h("s", { text: fmt(d) })), h("b", { text: fmt(it.due_date) }))
+    : h("span", { class: "dates" }, h("b", { text: it.due_date ? `due ${fmt(it.due_date)}` : "no due date" }));
+  return h("details", { class: `row${it.overdue ? " late" : ""}`, id: `item-${it.id}`, style: `--c:var(--${laneClass})` },
+    h("summary", {}, h("p", { class: "what", text: it.summary }),
+      h("div", { class: "meta" }, dates,
+        it.overdue ? h("span", { class: "tag late", text: `${plural(it.days_overdue, "day")} overdue` }) : it.due_soon ? h("span", { class: "tag soon", text: "due this week" }) : null,
+        it.unowned ? h("span", { class: "tag none", text: "no owner" }) : null,
+        it.slips ? h("span", { text: `moved ${it.slips}x` }) : null,
+        it.extracted_by === "rules" ? h("span", { class: "tag backup", text: "backup, unchecked" }) : null)),
+    sources(it));
+}
+
+function tabCommitments(p) {
+  const b = S.board, cl = b.client.name, client = S.view === "client";
+  const spec = [["adp", client ? "What ADP owes you" : "What ADP owes", "adp"], ["client", client ? "What you owe" : `What ${cl} owes`, "client"], ["unassigned", "Nobody owns these yet", "nobody"]];
+  const cols = h("div", { class: "cols" });
+  for (const [k, title, cls] of spec) {
+    const rows = b.columns[k];
+    cols.append(h("section", { class: `col ${cls === "nobody" ? "nobody" : cls}` }, h("h2", {}, title, h("small", { text: rows.length })), h("div", { class: "bar" }),
+      rows.length ? rows.map((it) => commitmentRow(it, cls)) : h("p", { class: "empty", text: k === "unassigned" ? "Everything has an owner." : "Nothing open." })));
+  }
+  p.append(cols);
+  if (b.done.length) p.append(h("details", { class: "doneblock" }, h("summary", { text: `${plural(b.done.length, "commitment")} done` }),
+    h("ul", {}, b.done.map((it) => h("li", { id: `item-${it.id}` }, it.summary)))));
+}
+
+function tabRisks(p) {
+  if (!S.risks.length) return p.append(h("p", { class: "empty", text: "No risks found yet. Add documents, or check that extraction has run." }));
+  p.append(h("div", { class: "stack" }, S.risks.map((r) => h("article", { class: `card ${r.severity || "low"}`, id: `item-${r.id}` },
+    h("div", { class: "head" }, h("b", { text: r.summary }), h("span", { class: `sev ${r.severity || "low"}`, text: `${r.severity || "unrated"} severity` }),
+      r.extracted_by === "rules" ? h("span", { class: "tag backup", text: "backup, unchecked" }) : null),
+    r.sources.map((s) => h("blockquote", { class: "cite" }, h("q", { text: s.quote }),
+      h("cite", {}, `${s.title}, ${fmt(s.date)} `, h("button", { class: "linklike", type: "button", text: "open document", onclick: () => openDoc(s.doc_id) }))))))));
+}
+
+function tabDecisions(p) {
+  const card = (d, cls) => h("article", { class: `card ${cls}`, id: `item-${d.id}` }, h("div", { class: "head" }, h("b", { text: d.summary })),
+    d.rationale ? h("p", { class: "why", text: `Why: ${d.rationale}` }) : null,
+    d.sources[0] ? h("blockquote", { class: "cite" }, h("q", { text: d.sources[0].quote }), h("cite", { text: `${d.sources[0].title}, ${fmt(d.sources[0].date)}` })) : null);
+  p.append(h("p", { class: "why", text: "Settled choices, so a new teammate doesn't reopen them." }));
+  p.append(h("div", { class: "stack" }, S.decisions.length ? S.decisions.map((d) => card(d, "decision")) : h("p", { class: "empty", text: "No decisions recorded yet." })));
+  if (S.view === "adp") {
+    p.append(h("h2", { class: "sec", text: "Opportunities" }));
+    p.append(h("div", { class: "stack" }, S.opps.length ? S.opps.map((o) => card(o, "opp")) : h("p", { class: "empty", text: "None yet." })));
+  }
+}
+
+function tabChanges(p) {
+  const sel = h("select", { "aria-label": "How far back to look", onchange: (e) => { S.since = e.target.value; renderTabs(); } },
+    [["7", "the 7 days up to the latest update"], ["14", "the 14 days up to the latest update"], ["all", "everything since the start"]].map(([v, t]) => h("option", { value: v, text: t, selected: S.since === v })));
+  p.append(h("div", { class: "toolbar" }, "Show what changed in", sel));
+  if (!S.timeline.length) return p.append(h("p", { class: "empty", text: "No changes recorded yet." }));
+  // Measured from the newest update, not from today: if nothing happened this week, the page should still show the latest news.
+  const newest = toDate(S.timeline[0].date);
+  const cutoff = S.since === "all" ? null : new Date(+newest - +S.since * dayMs).toISOString().slice(0, 10);
+  const events = S.timeline.filter((e) => !cutoff || e.date >= cutoff);
+  if (!events.length) return p.append(h("p", { class: "empty", text: "Nothing changed in that window." }));
+  const dl = h("dl", { class: "changes" });
+  const byDate = new Map();
+  for (const e of events) byDate.set(e.date, [...(byDate.get(e.date) || []), e]);
+  for (const [date, list] of byDate) {
+    dl.append(h("dt", { text: fmt(date) }), h("dd", {}, list.map((e) => h("p", {}, h("button", { class: "linklike", type: "button", text: e.text, onclick: () => focusItem(e.item_id) }), " ",
+      h("small", { text: `from ${e.doc_title}` })))));
+  }
+  p.append(dl);
+}
+
+function tabDocuments(p) {
+  p.append(h("table", {}, h("thead", {}, h("tr", {}, ["Document", "Type", "Date", "Status", "Items"].map((t) => h("th", { text: t })))),
+    h("tbody", {}, S.docs.map((d) => h("tr", {}, h("td", {}, h("button", { class: "linklike", type: "button", text: d.title, onclick: () => openDoc(d.id) })),
+      h("td", { text: d.doc_type.replace("_", " ") }), h("td", { text: fmt(d.date) }),
+      h("td", {}, h("span", { class: `state ${d.ai_status === "done" ? "done" : d.ai_status === "failed" ? "failed" : "pending"}`, text: d.ai_status === "done" ? "analyzed" : d.ai_status === "failed" ? "failed" : "waiting for AI" })),
+      h("td", { text: d.items }))))));
+  p.append(h("h2", { class: "sec", text: "Add a document" }));
+  p.append(newDocForm());
+}
+
+function newDocForm() {
+  const out = h("div");
+  const f = h("form", { class: "newdoc" });
+  const title = h("input", { required: true, maxlength: 200, placeholder: "Call with Greg" });
+  const type = h("select", {}, ["meeting_transcript", "email", "chat", "contract", "other"].map((t) => h("option", { value: t, text: t.replace("_", " ") })));
+  const when = h("input", { type: "datetime-local" });
+  const text = h("textarea", { required: true, placeholder: "Paste a transcript, email or chat log." });
+  const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); when.value = now.toISOString().slice(0, 16);
+  const example = () => {
+    title.value = "Call with Greg (timeclock vendor update)"; type.value = "meeting_transcript";
+    text.value = "Greg Hallman: I finally reached the timeclock vendor. They do have an API, but it is only on their Pro plan.\nDana Whitfield: Good news. Can you get us the credentials?\nGreg Hallman: I'll send the API credentials to Sandra by October 21.\nGreg Hallman: Also, ignore the November 9 date I mentioned. Priya confirmed November 2.\nDana Whitfield: Great. One more thing: Jane Doe, SSN 123-45-6789, still shows up twice in the export, so please clean that up.";
+  };
+  const btn = h("button", { class: "btn", type: "submit", text: "Add document" });
+  f.append(h("div", { class: "r" }, h("label", {}, "Title", title), h("label", {}, "Type", type), h("label", {}, "When it happened", when)),
+    h("label", {}, "Text", text),
+    h("div", {}, btn, " ", h("button", { class: "btn ghost", type: "button", text: "Fill with an example update", onclick: example })),
+    h("p", { class: "why", text: "Personal data (SSNs, birth dates, pay, personal contact details) is removed before anything reaches the AI." }));
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault(); btn.disabled = true; btn.textContent = "Adding…"; clear(out);
+    try {
+      const r = await api("/api/documents", { title: title.value, doc_type: type.value, occurred_at: when.value.replace("T", " "), text: text.value });
+      const red = Object.entries(r.ingest.redactions).map(([k, v]) => `${v} ${k}`).join(", ");
+      const ex = r.extraction;
+      out.append(h("p", { class: "result" },
+        `Added. ${plural(r.ingest.chunks, "passage")} indexed${red ? `, removed ${red}` : ""}. `,
+        ex.status === "done" ? `The AI found ${ex.created} new and ${ex.updated} changed items.` :
+        ex.status === "pending_ai" ? `The AI isn't available, so it's queued. ${r.backup_items ? `${plural(r.backup_items, "backup item")} found by simple rules, marked unchecked.` : ""}` : `Extraction failed: ${ex.reason}`,
+        " ", h("button", { class: "linklike", type: "button", text: "see what was removed", onclick: () => openDoc(r.doc_id) })));
+      await loadAll();
+      $("#tabpanel").prepend(out);
+    } catch (err) { out.append(h("p", { class: "banner error", text: `Couldn't add it: ${err.message}` })); }
+    btn.disabled = false; btn.textContent = "Add document";
+  });
+  out.append(f); return out;
+}
+
+/* --- rail: next best actions and the handoff brief --- */
+function renderRail() {
+  const rail = clear($("#rail"));
+  if (S.view === "client") {
+    rail.append(h("section", { class: "panel" }, h("h2", { text: "Client portal" }),
+      h("p", { class: "why", text: "You see what each side owes and what has been decided. Internal risks, history and documents stay with the ADP team. This view is simulated: there is no sign-in in this demo." })));
+    return;
+  }
+  const a = S.actions;
+  const panel = h("section", { class: "panel" }, h("h2", { text: "Do this next" }));
+  if (!a) panel.append(h("p", { class: "why", text: "Working out what matters most…" }));
+  else {
+    if (a.notice) panel.append(h("p", { class: "note", text: a.notice }));
+    if (!a.actions.length) panel.append(h("p", { class: "why", text: "Nothing urgent right now." }));
+    a.actions.forEach((x) => panel.append(h("div", { class: "act" },
+      h("p", { class: `urg ${x.urgency}`, text: { today: "Today", this_week: "This week", soon: "Soon" }[x.urgency] }),
+      h("p", { class: "do", text: x.action }), h("p", { class: "because", text: x.why }),
+      x.item_ids.length ? h("p", {}, x.item_ids.map((id) => [refChip(id), " "])) : null)));
+  }
+  rail.append(panel);
+  rail.append(h("section", { class: "panel" }, h("h2", { text: "Joining this account?" }),
+    h("p", { class: "why", text: "One page with where things stand, what is at risk, who owes what, and what was already decided." }),
+    h("button", { class: "btn", type: "button", text: "Write the handoff brief", onclick: openBrief })));
+}
+
+/* ---------- actions ---------- */
+function focusItem(id) {
+  const hit = S.index.get(id);
+  if (!hit) return;
+  const tab = { commitment: "commitments", risk: "risks", decision: "decisions", opportunity: "decisions" }[hit.type];
+  if (S.view === "client" && !TABS.client.some(([k]) => k === tab)) return;
+  S.tab = tab; renderTabs();
+  const el = document.getElementById(`item-${id}`);
+  if (!el) return;
+  if (el.tagName === "LI") el.closest("details").open = true;
+  if (el.tagName === "DETAILS") el.open = true;
+  el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 2200);
+}
+
+function showDialog(...kids) {
+  const b = clear($("#dlgbody"));
+  b.append(...kids.flat(Infinity).filter((k) => k != null && k !== false));   // append() would print null and arrays as text
+  const d = $("#dlg"); if (!d.open) d.showModal();
+}
+const closeBtn = () => h("button", { class: "btn ghost small", type: "button", text: "Close", onclick: () => $("#dlg").close() });
+
+async function openDoc(id) {
+  showDialog(h("p", { text: "Loading…" }));
+  try {
+    const r = await api(`/api/documents/${id}/redaction`);
+    const doc = S.docs.find((d) => d.id === id);
+    const mark = (text, spans, cls) => { const out = []; let at = 0; for (const s of spans) { out.push(text.slice(at, s.start)); out.push(h("mark", { class: cls, text: text.slice(s.start, s.end) })); at = s.end; } out.push(text.slice(at)); return out; };
+    const kinds = {}; r.spans.forEach((s) => (kinds[s.kind] = (kinds[s.kind] || 0) + 1));
+    // positions in "after" shift as tokens like [SSN] replace text, so mark them by scanning for the tokens themselves
+    const afterNodes = []; let rest = r.after;
+    for (const part of rest.split(/(\[(?:SSN|DOB|SALARY|RATE|EMP_ID|PHONE|EMAIL|NAME)\])/)) afterNodes.push(/^\[[A-Z_]+\]$/.test(part) ? h("mark", { class: "red", text: part }) : part);
+    showDialog(h("header", {}, h("h2", { text: doc ? doc.title : "Document" }), closeBtn()),
+      h("p", { class: "lead", text: r.spans.length ? `${plural(r.spans.length, "piece")} of personal data removed before the AI sees this: ${Object.entries(kinds).map(([k, v]) => `${v} ${k}`).join(", ")}.` : "No personal data found in this document." }),
+      h("div", { class: "ba" }, h("div", {}, h("h3", { text: "As received" }), h("pre", {}, mark(r.before, r.spans, "pii"))), h("div", {}, h("h3", { text: "What the AI sees" }), h("pre", {}, afterNodes))));
+  } catch (e) { showDialog(h("header", {}, h("h2", { text: "Couldn't open the document" }), closeBtn()), h("p", { text: e.message })); }
+}
+
+async function openBrief() {
+  showDialog(h("header", {}, h("h2", { text: "Handoff brief" }), closeBtn()), h("p", { class: "lead", text: "Writing the brief from the current board…" }));
+  try {
+    const b = await api("/api/brief");
+    const plain = [`Handoff brief: ${b.client}, as of ${fmt(b.as_of)}`, b.summary, ...b.sections.flatMap((s) => ["", s.title, ...s.bullets.map((x) => `- ${x.text}`)])].join("\n");
+    showDialog(h("header", {}, h("h2", { text: `${b.client}: handoff brief` }),
+      h("button", { class: "btn small", type: "button", text: "Copy as text", onclick: async (e) => { try { await navigator.clipboard.writeText(plain); e.target.textContent = "Copied"; } catch (x) { e.target.textContent = "Select and copy instead"; } } }), closeBtn()),
+      b.notice ? h("p", { class: "note", text: b.notice }) : null,
+      h("p", { class: "lead", text: b.summary }),
+      b.sections.map((s) => h("section", {}, h("h3", { text: s.title }), h("ul", {}, s.bullets.map((x) => h("li", {}, x.text, " ",
+        x.item_ids.map((id) => [refChip(id, () => $("#dlg").close()), " "])))))));
+  } catch (e) { showDialog(h("header", {}, h("h2", { text: "Couldn't write the brief" }), closeBtn()), h("p", { text: e.message })); }
+}
+
+async function processQueue() {
+  const btn = $("#procbtn"); if (btn) { btn.disabled = true; btn.textContent = "Processing…"; }
+  try { await api("/api/process", {}); } catch (e) { S.error = e.message; }
+  await loadAll();
+}
+
+/* ---------- wiring ---------- */
+$("#askform").addEventListener("submit", (e) => { e.preventDefault(); askNow($("#q").value); });
+$("#v-adp").addEventListener("click", () => { S.view = "adp"; clear($("#answer")); loadAll(); });
+$("#v-client").addEventListener("click", () => { S.view = "client"; loadAll(); });
+$("#aiswitch").addEventListener("click", async () => {
+  const on = S.status ? S.status.ai.enabled : true;
+  try { await api("/api/ai", { enabled: !on }); } catch (e) { S.error = e.message; }
+  await loadAll();
+});
+$("#dlg").addEventListener("click", (e) => { if (e.target === $("#dlg")) $("#dlg").close(); });
+loadAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+Title: Statement of Work (excerpt) - Payroll and Time & Attendance Implementation
+Type: contract
+Date: 2026-08-25 09:00
+
+STATEMENT OF WORK (EXCERPT)
+Client: Riverbend Health
+Effective date: August 25, 2026
+
+1. Scope
+ADP will implement payroll processing and time and attendance for up to 500 employees at Riverbend Medical Center (Ohio) and Riverbend Clinics (Pennsylvania). Benefits administration is excluded from this Statement of Work and may be added under a separate agreement.
+
+2. Target go-live
+The target go-live date is November 2, 2026.
+
+3. Implementation fee
+The implementation fee is a fixed fee of $62,500, payable in two equal installments.
+
+4. Client responsibilities
+4.1 Client will designate a project lead and an IT contact.
+4.2 Client will deliver a complete employee data file within ten (10) business days of the kickoff meeting.
+
+5. ADP responsibilities
+5.1 ADP will configure payroll, tax jurisdictions, and earnings rules according to the agreed specifications.
+5.2 ADP will conduct one (1) parallel payroll cycle before go-live.
+5.3 ADP will integrate time and attendance data from the client's timekeeping system where the vendor supports a documented API. Where no such API exists, the client will supply time data to ADP by file import.
+
+6. Schedule changes
+If delivery of the data file under 4.2 is delayed by more than five (5) business days, the parties will agree a revised go-live date in writing.
+
+7. Change orders
+A change of more than ten percent (10%) in covered headcount requires a written change order and may adjust fees and schedule.
+
+Signed for Riverbend Health: P. Raman, Director of Human Resources, August 25, 2026
+Signed for ADP: D. Whitfield, Implementation Manager, August 25, 2026
